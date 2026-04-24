@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>CARE-Well | Empower. Educate. Elevate. — Community Education & Empowerment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #0f172a; line-height: 1.5; scroll-behavior: smooth; }
+    :root {
+      --primary-blue: #1e6fdf;
+      --primary-green: #2c9b5e;
+      --primary-orange: #f39c12;
+      --dark-bg: #0b2b26;
+      --light-bg: #f8fafc;
+      --gray-border: #e2e8f0;
+      --shadow: 0 20px 25px -12px rgba(0,0,0,0.05);
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    /* header */
+    .site-header { background: white; border-bottom: 1px solid var(--gray-border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.96); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 16px 0; }
+    .logo a { font-size: 2rem; font-weight: 800; text-decoration: none; background: linear-gradient(135deg, var(--primary-blue), var(--primary-green)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo span { color: var(--primary-orange); }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #1e293b; transition: 0.2s; font-size: 0.96rem; }
+    .nav-links a:hover, .nav-links a.active-link { color: var(--primary-blue); font-weight: 700; }
+    .btn-outline-sm { border: 1.8px solid var(--primary-blue); padding: 6px 18px; border-radius: 40px; background: transparent; color: var(--primary-blue); font-weight: 600; cursor: pointer; display: inline-block; }
+    .btn-primary { background: var(--primary-blue); color: white; padding: 12px 32px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; border: none; cursor: pointer; }
+    .btn-secondary { background: var(--primary-orange); color: white; padding: 12px 32px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; cursor: pointer; }
+    .btn-green { background: var(--primary-green); color: white; padding: 10px 26px; border-radius: 40px; font-weight: 600; border: none; cursor: pointer; }
+    /* hero */
+    .hero { background: linear-gradient(115deg, #eef2ff 0%, #e6f7ec 100%); padding: 80px 0; }
+    .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
+    .hero-content { flex: 1.2; }
+    .hero-content h1 { font-size: 3.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 24px; color: #0c4a6e; }
+    .hero-stats { display: flex; gap: 40px; margin-top: 32px; }
+    .stat-item h3 { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); }
+    .hero-image { flex: 1; background: #d9e8ff; border-radius: 40px; padding: 12px; box-shadow: var(--shadow); text-align: center; }
+    .hero-image img { max-width: 100%; border-radius: 32px; width: 100%; object-fit: cover; height: auto; }
+    /* sections */
+    .section-title { text-align: center; margin-bottom: 56px; }
+    .section-title h2 { font-size: 2.4rem; font-weight: 700; }
+    .section-title span { color: var(--primary-green); border-bottom: 3px solid var(--primary-orange); padding-bottom: 6px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin: 40px 0; }
+    .program-card { background: white; border-radius: 32px; padding: 32px 24px; box-shadow: var(--shadow); border: 1px solid var(--gray-border); transition: 0.25s; }
+    .program-card:hover { transform: translateY(-6px); border-color: var(--primary-blue); }
+    .program-icon { font-size: 2.8rem; color: var(--primary-blue); margin-bottom: 20px; }
+    .program-tag { background: #eef2ff; color: var(--primary-blue); padding: 4px 14px; border-radius: 30px; font-size: 0.75rem; display: inline-block; margin: 14px 0; }
+    .btn-apply { background: transparent; border: 1.5px solid var(--primary-green); padding: 8px 24px; border-radius: 40px; font-weight: 600; margin-top: 20px; display: inline-block; text-decoration: none; color: var(--primary-green); transition: 0.2s; cursor: pointer; }
+    .about-preview { background: var(--light-bg); padding: 80px 0; }
+    .two-col { display: flex; gap: 60px; flex-wrap: wrap; }
+    .impact-stats { background: linear-gradient(120deg, #eef6f0, #eef2fa); padding: 70px 0; }
+    .stats-container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; text-align: center; }
+    .stat-number { font-size: 3rem; font-weight: 800; color: var(--primary-orange); }
+    /* footer */
+    .footer { background: #0f172a; color: #cbd5e1; padding: 56px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 48px; margin-bottom: 40px; }
+    /* inner pages */
+    .page-banner { background: var(--light-bg); padding: 60px 0 40px; border-bottom: 1px solid var(--gray-border); }
+    .page-banner h1 { font-size: 2.8rem; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; margin: 50px 0; }
+    .team-card { background: white; border-radius: 32px; padding: 32px 20px; text-align: center; box-shadow: var(--shadow); transition: 0.2s; }
+    .team-card:hover { transform: translateY(-5px); }
+    .team-avatar-img { width: 140px; height: 140px; border-radius: 100%; object-fit: cover; margin-bottom: 20px; background: #e2e8f0; display: block; margin-left: auto; margin-right: auto; border: 4px solid var(--primary-orange); }
+    .doc-list { margin: 40px 0; }
+    .doc-item { background: #f8fafc; padding: 18px 24px; border-radius: 28px; margin-bottom: 16px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .badge { background: var(--primary-green); color: white; padding: 6px 18px; border-radius: 60px; font-size: 0.75rem; cursor: pointer; margin-left: auto; }
+    /* forms */
+    .form-card { max-width: 680px; margin: 0 auto; background: white; padding: 48px; border-radius: 40px; box-shadow: var(--shadow); border: 1px solid var(--gray-border); }
+    .form-group { margin-bottom: 24px; }
+    input, select, textarea { width: 100%; padding: 14px 20px; border-radius: 60px; border: 1px solid var(--gray-border); font-family: inherit; background: #fff; }
+    .btn-submit { background: var(--primary-blue); color: white; border: none; padding: 14px; border-radius: 60px; cursor: pointer; font-weight: 700; width: 100%; font-size: 1rem; }
+    .message-success, .message-error { padding: 14px; border-radius: 60px; text-align: center; margin-top: 20px; }
+    .message-success { background: #dcfce7; color: #166534; }
+    .message-error { background: #fee2e2; color: #991b1b; }
+    .hidden { display: none; }
+    .dashboard-card { background: #f1f5f9; border-radius: 32px; padding: 28px; margin-bottom: 28px; }
+    @media (max-width: 800px) { .hero-content h1 { font-size: 2.2rem; } .header-inner { flex-direction: column; gap: 16px; } }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo"><a href="#" data-page="home" class="nav-link">CARE-<span>Well</span></a></div>
+    <ul class="nav-links" id="navMenu">
+      <li><a href="#" data-page="home" class="nav-link active-link">Home</a></li>
+      <li><a href="#" data-page="about" class="nav-link">About</a></li>
+      <li><a href="#" data-page="programs" class="nav-link">Programs</a></li>
+      <li><a href="#" data-page="accountability" class="nav-link">Accountability</a></li>
+      <li><a href="#" data-page="team" class="nav-link">Team</a></li>
+      <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+      <li><a href="#" data-page="register" class="btn-outline-sm" id="registerNavBtn"><i class="fas fa-user-plus"></i> Register/Login</a></li>
+    </ul>
+  </div>
+</header>
+<main id="app-root"></main>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><div class="footer-logo" style="font-size:1.8rem; font-weight:800;">CARE-Well</div><p>Empowering communities through education, transparency, and lasting impact since 2019.</p><div style="margin-top:16px;"><i class="fab fa-twitter"></i> <i class="fab fa-linkedin"></i> <i class="fab fa-instagram"></i></div></div>
+    <div><h4>Explore</h4><ul style="list-style: none; line-height: 2.2;"><li><a href="#" data-page="about" class="footer-link">Our Mission</a></li><li><a href="#" data-page="programs" class="footer-link">Programs</a></li><li><a href="#" data-page="accountability" class="footer-link">Financial Reports</a></li><li><a href="#" data-page="team" class="footer-link">Leadership</a></li></ul></div>
+    <div><h4>Get involved</h4><ul style="list-style: none; line-height: 2.2;"><li><a href="#" data-page="register" class="footer-link">Volunteer</a></li><li><a href="#" data-page="contact" class="footer-link">Partner with us</a></li><li><a href="#" data-page="register" class="footer-link">Donate</a></li></ul></div>
+    <div><h4>Contact</h4><p><i class="fas fa-envelope"></i> hello@care-well.org</p><p><i class="fas fa-phone"></i> +1 (555) 778-4321</p><p>123 Community Rd, Suite 200, Springfield, IL</p></div>
+  </div>
+  <div class="container text-center" style="font-size:0.8rem; border-top: 1px solid #334155; padding-top: 24px;">© 2025 CARE-Well — Bridging gaps, building futures.</div>
+</footer>
+<script>
+  // ======================== COMPLETE AUTHENTICATION SYSTEM ========================
+  let currentUser = null;
+
+  function initAuth() { 
+    const stored = localStorage.getItem('carewell_user'); 
+    if(stored) { 
+      try { currentUser = JSON.parse(stored); } catch(e){} 
+    } 
+    updateAuthUI(); 
+  }
+
+  function saveUserSession(user) { 
+    currentUser = user; 
+    localStorage.setItem('carewell_user', JSON.stringify(user)); 
+    updateAuthUI(); 
+  }
+
+  function logout() { 
+    currentUser = null; 
+    localStorage.removeItem('carewell_user'); 
+    updateAuthUI(); 
+    navigateTo('home'); 
+    showToast("Logged out successfully", "success"); 
+  }
+
+  function updateAuthUI() { 
+    const btn = document.getElementById('registerNavBtn'); 
+    if(currentUser) { 
+      btn.innerHTML = `<i class="fas fa-tachometer-alt"></i> Dashboard`; 
+      btn.setAttribute('data-page', 'dashboard'); 
+      // update any dashboard link in nav if needed
+    } else { 
+      btn.innerHTML = `<i class="fas fa-user-plus"></i> Register/Login`; 
+      btn.setAttribute('data-page', 'register'); 
+    } 
+  }
+
+  function registerUser(name, email, password, programInterest) {
+    const users = JSON.parse(localStorage.getItem('carewell_users') || '[]');
+    if(users.find(u => u.email === email)) return { success: false, message: "Email already exists. Please login." };
+    if(password.length < 6) return { success: false, message: "Password must be at least 6 characters." };
+    const newUser = { 
+      id: Date.now(), 
+      name, 
+      email, 
+      password: btoa(password), 
+      programInterest, 
+      enrolledPrograms: [], 
+      createdAt: new Date().toISOString() 
+    };
+    users.push(newUser); 
+    localStorage.setItem('carewell_users', JSON.stringify(users));
+    const sessionUser = { id: newUser.id, name: newUser.name, email: newUser.email, programInterest, enrolledPrograms: [] };
+    saveUserSession(sessionUser);
+    return { success: true, message: "Registration successful! Welcome to CARE-Well." };
+  }
+
+  function loginUser(email, password) {
+    const users = JSON.parse(localStorage.getItem('carewell_users') || '[]');
+    const user = users.find(u => u.email === email && u.password === btoa(password));
+    if(!user) return { success: false, message: "Invalid email or password." };
+    const sessionUser = { id: user.id, name: user.name, email: user.email, programInterest: user.programInterest, enrolledPrograms: user.enrolledPrograms || [] };
+    saveUserSession(sessionUser);
+    return { success: true, message: "Welcome back!" };
+  }
+
+  function enrollInProgram(programName) {
+    if(!currentUser) return false;
+    const users = JSON.parse(localStorage.getItem('carewell_users') || '[]');
+    const idx = users.findIndex(u => u.id === currentUser.id);
+    if(idx !== -1) {
+      if(!users[idx].enrolledPrograms) users[idx].enrolledPrograms = [];
+      if(!users[idx].enrolledPrograms.includes(programName)) {
+        users[idx].enrolledPrograms.push(programName);
+        localStorage.setItem('carewell_users', JSON.stringify(users));
+        currentUser.enrolledPrograms = users[idx].enrolledPrograms;
+        localStorage.setItem('carewell_user', JSON.stringify(currentUser));
+        return true;
+      } else {
+        return false; // already enrolled
+      }
+    }
+    return false;
+  }
+
+  function showToast(msg, type = "info") { 
+    alert(msg); 
+  }
+
+  // ======================== PAGE CONTENTS ========================
+  const pages = {
+    home: () => `
+      <div class="hero"><div class="container hero-grid">
+        <div class="hero-content"><h1>Empower communities,<br>transform futures with <span style="color:var(--primary-orange);">CARE-Well</span></h1><p>Skills Bridge, CIWE, and community-driven education that builds lasting change. Join 1,450+ learners already advancing their careers and lives.</p>
+        <div class="btn-group" style="display:flex; gap:16px; margin: 24px 0;"><a href="#" data-page="programs" class="btn-primary nav-internal">Explore Programs →</a><a href="#" data-page="register" class="btn-secondary nav-internal">Join as member</a></div>
+        <div class="hero-stats"><div class="stat-item"><h3>1,450+</h3><p>Learners trained</p></div><div class="stat-item"><h3>24</h3><p>Partner communities</p></div><div class="stat-item"><h3>89%</h3><p>Job placement rate</p></div></div></div>
+        <div class="hero-image"><img src="https://placehold.co/600x450/1e6fdf/ffffff?text=CARE-Well+Community+Learning" alt="CARE-Well community learning"></div>
+      </div></div>
+      <div class="container" style="padding: 80px 0;"><div class="section-title"><h2>Our <span>Flagship Programs</span></h2><p>Tailored learning pathways for real-world impact — all at no or low cost</p></div>
+      <div class="cards-grid">
+        <div class="program-card"><div class="program-icon"><i class="fas fa-laptop-code"></i></div><h3>Skills Bridge</h3><p>Intensive digital & vocational training for youth. Includes Microsoft Office, freelancing basics, customer service, and 3-month mentorship. Graduates receive certification and job referrals.</p><div class="program-tag">📍 6 months | Hybrid</div><a href="#" data-page="register" data-program="Skills Bridge" class="btn-apply enroll-link">Apply now →</a></div>
+        <div class="program-card"><div class="program-icon"><i class="fas fa-female"></i></div><h3>CIWE Initiative</h3><p>Community Integration & Women Empowerment: entrepreneurship bootcamps, financial literacy, leadership retreats, and networking with female business owners. </p><div class="program-tag">🗓️ 10 weeks (rolling)</div><a href="#" data-page="register" data-program="CIWE Initiative" class="btn-apply enroll-link">Register interest</a></div>
+        <div class="program-card"><div class="program-icon"><i class="fas fa-chalkboard"></i></div><h3>Adult Literacy & ESL</h3><p>Free foundational literacy, numeracy, and English as a Second Language classes for newcomers and adults seeking career advancement.</p><div class="program-tag">🌐 Online & in-person</div><a href="#" data-page="register" data-program="Literacy & ESL" class="btn-apply enroll-link">Join class</a></div>
+        <div class="program-card"><div class="program-icon"><i class="fas fa-users"></i></div><h3>Youth Leadership Academy</h3><p>After-school program focusing on civic engagement, public speaking, project management, and college readiness for teens.</p><a href="#" data-page="register" data-program="Youth Leadership" class="btn-apply enroll-link">Apply for scholarship</a></div>
+      </div></div>
+      <div class="about-preview"><div class="container two-col"><div class="about-text"><h3>Who we are</h3><p>CARE-Well is a registered 501(c)(3) nonprofit founded in 2019 by educators and activists. We believe that education is the most powerful tool to break cycles of poverty. Our programs are designed WITH communities, not FOR them — ensuring local relevance and long-term sustainability.</p><a href="#" data-page="about" class="learn-more nav-internal" style="color:var(--primary-blue); font-weight:600; display:inline-block; margin-top:16px;">Full story →</a></div><div class="about-text"><h3>Our mission</h3><p>To equip individuals with practical skills, mentorship, and confidence so they can thrive in the modern economy. We champion transparency, inclusion, and measurable outcomes.</p><h3 style="margin-top:24px;">Core values</h3><p>🤝 Community first · 📊 Radical transparency · 🌱 Lifelong learning · ⚖️ Equity & justice</p></div></div></div>
+      <div class="impact-stats"><div class="container stats-container"><div class="stat-card"><div class="stat-number">$275K+</div><p>distributed as stipends & scholarships</p></div><div class="stat-card"><div class="stat-number">47</div><p>active volunteer mentors</p></div><div class="stat-card"><div class="stat-number">94%</div><p>would recommend programs</p></div></div></div>
+      <div style="padding: 70px 0; text-align:center; background:#fef9e6;"><div class="container"><h2 style="margin-bottom: 20px;">Join a movement of changemakers</h2><p style="max-width:600px; margin:0 auto 32px;">Whether you want to learn, volunteer, or partner — there's a place for you at CARE-Well. Start your journey today.</p><a href="#" data-page="register" class="btn-primary nav-internal" style="background: var(--primary-green);">Get started today →</a></div></div>
+    `,
+    about: () => `<div class="page-banner"><div class="container"><h1>About CARE-Well</h1><p>Our story, mission, and commitment to lasting change.</p></div></div><div class="container" style="padding: 60px 0;"><div style="max-width: 900px; margin:0 auto;"><h2>Our journey</h2><p>Founded in 2019, CARE-Well began as a small after-school tutoring program in Springfield. Today, we operate across 24 locations and online, reaching over 1,450 individuals annually. We specialize in bridging the digital divide, empowering women entrepreneurs, and creating inclusive learning environments.</p><h2 style="margin-top: 40px;">What we believe</h2><p>We believe education is a right, not a privilege. We center racial equity, gender justice, and economic mobility in everything we do. Our holistic model combines hard skills, mentorship, and wraparound support.</p><h2>Strategic priorities (2025-2027)</h2><ul style="margin-left: 24px; line-height: 1.8;"><li>📘 Expand digital literacy in rural areas (target: +10 new communities)</li><li>💼 Launch job placement pipeline with 50+ local employers</li><li>📢 Amplify community-led advocacy and parent leadership programs</li><li>🌍 Develop accessible online learning platform with mobile-friendly courses</li></ul><div style="background:#eef2ff; border-radius: 32px; padding: 32px; margin-top: 40px;"><h3>🌟 Impact highlight 2024</h3><p>87% of Skills Bridge graduates secured employment or continued education within 6 months. Our CIWE program supported 12 women to launch small businesses, generating over $180k in combined revenue. We provided $75k in direct student stipends to remove barriers to attendance.</p></div></div></div>`,
+    programs: () => `<div class="page-banner"><div class="container"><h1>Learning & Programs</h1><p>Career training, empowerment, and foundational education — designed for real results.</p></div></div><div class="container" style="padding: 50px 0;"><div class="cards-grid">
+      <div class="program-card"><div class="program-icon"><i class="fas fa-bridge"></i></div><h3>Skills Bridge (Comprehensive)</h3><p>12 weeks intensive: computer fundamentals, Google Suite, customer service, CV writing, interview skills. Includes paid internship placement for top graduates. Next cohort: Sept 2025. Evening & weekend options.</p><div class="program-tag">Scholarships available</div><a href="#" data-page="register" data-program="Skills Bridge" class="btn-apply enroll-link">Secure your spot</a></div>
+      <div class="program-card"><div class="program-icon"><i class="fas fa-hand-holding-usd"></i></div><h3>CIWE — Women Entrepreneurs Lab</h3><p>Weekly workshops on business model canvas, digital marketing, access to micro-grants, and peer mentorship. Open to all women and non-binary individuals. Includes 1:1 coaching sessions.</p><a href="#" data-page="register" data-program="CIWE Initiative" class="btn-apply enroll-link">Join waitlist</a></div>
+      <div class="program-card"><div class="program-icon"><i class="fas fa-school"></i></div><h3>Family Literacy Program</h3><p>Intergenerational learning: parents and children attend classes together, focusing on English, math, and digital skills to support children's education. Childcare provided.</p><a href="#" data-page="register" data-program="Family Literacy" class="btn-apply enroll-link">Register family</a></div>
+      <div class="program-card"><div class="program-icon"><i class="fas fa-chalkboard-teacher"></i></div><h3>Digital Navigator Certificate</h3><p>Become a community digital literacy coach. 8-week training + practicum. Graduates are hired as part-time navigators in partner libraries.</p><a href="#" data-page="register" data-program="Digital Navigator" class="btn-apply enroll-link">Apply now</a></div>
+    </div>
+    <div style="margin-top: 48px; background:#eef2ff; border-radius: 40px; padding: 36px; text-align:center;"><i class="fas fa-graduation-cap fa-2x" style="color:var(--primary-blue);"></i><p style="margin-top: 16px;"><strong>🚀 Coming soon:</strong> Our full online learning platform will include video lessons, progress dashboards, certificates, and instructor feedback. For now, register for any program to receive class schedules and invites.</p><p style="margin-top:12px;">📅 Info sessions every first Tuesday of the month. <a href="#" data-page="contact" class="nav-internal" style="color:var(--primary-blue);">Contact us for details</a></p></div></div>`,
+    accountability: () => `<div class="page-banner"><div class="container"><h1>Accountability & Financial Transparency</h1><p>We open our books and our impact — because trust is earned.</p></div></div><div class="container" style="padding: 50px 0;"><div class="section-title"><h2>Financial <span>Reports & Docs</span></h2></div><div class="doc-list">
+      <div class="doc-item"><i class="fas fa-file-pdf" style="font-size: 1.6rem; color:#e63946;"></i><span><strong>2024 Annual Report</strong> — including audited financials, program outcomes, donor list, and impact stories (44 pages).</span><span class="badge" onclick="alert('PDF download simulation: 2024 Annual Report')">Download PDF</span></div>
+      <div class="doc-item"><i class="fas fa-chart-line"></i><span><strong>Q1 2025 Financial Summary</strong> — revenue vs. expenses, fundraising efficiency, cash flow.</span><span class="badge" onclick="alert('Open financial dashboard')">View details</span></div>
+      <div class="doc-item"><i class="fas fa-file-contract"></i><span><strong>IRS Form 990 (2024)</strong> — public disclosure copy with full schedules.</span><span class="badge" onclick="alert('Form 990 preview')">Access</span></div>
+      <div class="doc-item"><i class="fas fa-handshake"></i><span><strong>Conflict of Interest Policy & Board Charter</strong> — governance documents.</span><span class="badge" onclick="alert('Governance documents')">Read</span></div>
+      <div class="doc-item"><i class="fas fa-chart-pie"></i><span><strong>Impact Metrics Dashboard 2025</strong> — participation, retention, satisfaction.</span><span class="badge" onclick="alert('Interactive dashboard')">Open</span></div>
+    </div>
+    <div style="background:#f0fdf4; border-radius: 32px; padding: 32px; margin-top: 30px;"><h3><i class="fas fa-check-circle"></i> Our transparency pledge</h3><p>We follow the Charity Navigator standards. 92% of every dollar goes directly to programs. Third-party evaluations available upon request. We are members of the National Council of Nonprofits and commit to annual external audit.</p><p><strong>💡 Looking for a specific report?</strong> Contact us at finance@care-well.org</p></div></div>`,
+    team: () => `<div class="page-banner"><div class="container"><h1>Meet the Team</h1><p>Passionate leaders, educators, and advocates driving change every day.</p></div></div><div class="container" style="padding: 40px 0;"><div class="team-grid">
+      <div class="team-card"><img class="team-avatar-img" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr. Maya Rodriguez"><h4>Dr. Maya Rodriguez</h4><p>Executive Director</p><small>Former education policy advisor, PhD in Community Development, 20+ years experience</small></div>
+      <div class="team-card"><img class="team-avatar-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Kariuki"><h4>James Kariuki</h4><p>Skills Bridge Director</p><small>Tech educator, certified Google trainer, curriculum designer</small></div>
+      <div class="team-card"><img class="team-avatar-img" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Linda Ochieng"><h4>Linda Ochieng</h4><p>CIWE Program Lead</p><small>Social entrepreneur, founder of Women in Business Network, mentor to 200+ women</small></div>
+      <div class="team-card"><img class="team-avatar-img" src="https://randomuser.me/api/portraits/men/52.jpg" alt="Samuel Chen"><h4>Samuel Chen</h4><p>Finance & Operations</p><small>Nonprofit financial management, CPA candidate, 12 years in social sector</small></div>
+      <div class="team-card"><img class="team-avatar-img" src="https://randomuser.me/api/portraits/women/89.jpg" alt="Patricia Mwangi"><h4>Patricia Mwangi</h4><p>Community Outreach Manager</p><small>Grassroots mobilizer, 10+ years in social work and community organizing</small></div>
+      <div class="team-card"><img class="team-avatar-img" src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Park"><h4>David Park</h4><p>Digital Learning Specialist</p><small>EdTech designer, curriculum developer, former instructional coach</small></div>
+    </div><p style="text-align:center; margin-top:20px;"><i class="fas fa-users"></i> We also have 47+ active volunteers and 12 board members. Want to join our mission? <a href="#" data-page="contact" class="nav-internal" style="color:var(--primary-blue);">Reach out today</a></p></div>`,
+    contact: () => `<div class="page-banner"><div class="container"><h1>Contact & Get involved</h1><p>We’d love to hear from you — whether it's a question, partnership, or volunteer opportunity.</p></div></div><div class="container" style="padding: 50px 0;"><div class="form-card"><form id="globalContactForm"><div class="form-group"><input type="text" id="contactFullName" placeholder="Your full name" required></div><div class="form-group"><input type="email" id="contactEmailAddr" placeholder="Email address" required></div><div class="form-group"><select id="contactInquiry"><option>General inquiry</option><option>Volunteer with us</option><option>Corporate partnership</option><option>Media/press</option><option>Donation questions</option></select></div><div class="form-group"><textarea rows="4" id="contactMessageText" placeholder="Write your message..."></textarea></div><button type="submit" class="btn-submit">Send message →</button><div id="contactGlobalMsg" class="hidden"></div></form></div><div style="margin-top: 48px; text-align:center; display:flex; flex-wrap:wrap; justify-content:center; gap:32px;"><div><i class="fas fa-map-pin fa-2x" style="color:var(--primary-orange);"></i><p>123 Community Rd, Suite 200<br>Springfield, IL 62701</p></div><div><i class="fas fa-clock fa-2x"></i><p>Mon-Fri 9am–5pm CT<br>Sat by appointment</p></div><div><i class="fas fa-envelope fa-2x"></i><p>hello@care-well.org<br>support@care-well.org</p></div><div><i class="fas fa-phone-alt fa-2x"></i><p>+1 (555) 778-4321<br>Hotline: +1 (555) 778-4322</p></div></div></div>`,
+    register: () => `<div class="page-banner"><div class="container"><h1>Join CARE-Well community</h1><p>Register for programs, create account, or login to access your dashboard and enroll.</p></div></div><div class="container" style="padding: 50px 0;"><div class="form-card"><h3>✨ New member registration</h3><form id="registerMainForm"><div class="form-group"><input type="text" id="regNameMain" placeholder="Full name" required></div><div class="form-group"><input type="email" id="regEmailMain" placeholder="Email address" required></div><div class="form-group"><select id="regProgramSelectMain"><option value="">Select a program (optional, you can enroll later)</option><option>Skills Bridge</option><option>CIWE Initiative</option><option>Literacy & ESL</option><option>Youth Leadership</option><option>Family Literacy</option><option>Digital Navigator</option></select></div><div class="form-group"><input type="password" id="regPassMain" placeholder="Create password (min 6 characters)" required></div><button type="submit" class="btn-submit">Register & Sign in</button><div id="regMainMessage" class="hidden"></div></form><p style="margin-top: 28px; text-align:center;">Existing user? <a href="#" id="showLoginPanelLink" style="color:var(--primary-blue); font-weight:600;">Login here →</a></p><div id="loginSectionWrapper" style="display:none; margin-top: 36px;"><h3>🔐 Login to account</h3><form id="loginMainForm"><div class="form-group"><input type="email" id="loginEmailMain" placeholder="Your email" required></div><div class="form-group"><input type="password" id="loginPassMain" placeholder="Password" required></div><button type="submit" class="btn-submit">Login</button><div id="loginMainMessage" class="hidden"></div></form></div><p style="margin-top: 24px; text-align:center; font-size:0.85rem;"><i class="fas fa-lock"></i> Your data is secure. After login you can enroll in programs and track your progress.</p></div></div>`,
+    dashboard: () => {
+      if(!currentUser) return `<div class="container" style="padding:100px; text-align:center;"><h2>Please <a href="#" data-page="register" class="nav-internal">log in</a> to access dashboard</h2></div>`;
+      return `<div class="page-banner"><div class="container"><h1>Dashboard, ${currentUser.name}</h1><p>Track your programs, enrollment status, and upcoming events.</p></div></div><div class="container" style="padding: 50px 0;"><div class="dashboard-card"><h3><i class="fas fa-book-open"></i> My enrolled programs</h3><p>${currentUser.enrolledPrograms?.length ? currentUser.enrolledPrograms.map(p => `✅ ${p}`).join('<br>') : 'You haven’t enrolled yet. <a href="#" data-page="programs" class="nav-internal" style="color:var(--primary-blue);">Explore programs →</a>'}</p></div><div class="dashboard-card"><h3><i class="fas fa-user-edit"></i> Personal info</h3><p><strong>Email:</strong> ${currentUser.email}<br><strong>Member since:</strong> ${new Date().toLocaleDateString()}<br><strong>Interest area:</strong> ${currentUser.programInterest || 'Not specified'}</p><button id="dashboardLogoutBtn" class="btn-green">Sign out</button></div><div class="dashboard-card"><h3>📢 Announcements & next steps</h3><p>📅 Skills Bridge info session: May 10, 2025 at 6pm online. <br>🎓 CIWE application deadline: June 1. <br>💻 New self-paced course: Digital Literacy 101 launching in July.</p><p><i class="fas fa-question-circle"></i> Need help? Contact your program coordinator at programs@care-well.org</p></div></div>`;
+    }
+  };
+
+  // ======================== NAVIGATION & EVENT HANDLERS ========================
+  function navigateTo(pageName) {
+    let content = pages[pageName] ? pages[pageName]() : pages.home();
+    if(pageName === 'dashboard' && !currentUser) { navigateTo('register'); return; }
+    document.getElementById('app-root').innerHTML = content;
+    attachGlobalListeners();
+    if(pageName === 'dashboard') {
+      const logoutBtn = document.getElementById('dashboardLogoutBtn');
+      if(logoutBtn) logoutBtn.addEventListener('click', () => logout());
+    }
+    updateActiveNav(pageName);
+    window.scrollTo(0,0);
+  }
+
+  function attachGlobalListeners() {
+    // navigation for internal links
+    document.querySelectorAll('.nav-internal, .footer-link, .nav-link').forEach(link => {
+      link.removeEventListener('click', handleNavClick);
+      link.addEventListener('click', handleNavClick);
+    });
+    // enroll links
+    document.querySelectorAll('.enroll-link').forEach(btn => {
+      btn.removeEventListener('click', handleEnrollClick);
+      btn.addEventListener('click', handleEnrollClick);
+    });
+    // registration form
+    const regForm = document.getElementById('registerMainForm');
+    if(regForm) {
+      regForm.removeEventListener('submit', handleRegister);
+      regForm.addEventListener('submit', handleRegister);
+    }
+    // login form
+    const loginForm = document.getElementById('loginMainForm');
+    if(loginForm) {
+      loginForm.removeEventListener('submit', handleLogin);
+      loginForm.addEventListener('submit', handleLogin);
+    }
+    // show login panel
+    const showLogin = document.getElementById('showLoginPanelLink');
+    if(showLogin) {
+      showLogin.removeEventListener('click', toggleLoginPanel);
+      showLogin.addEventListener('click', toggleLoginPanel);
+    }
+    // contact form
+    const contactForm = document.getElementById('globalContactForm');
+    if(contactForm) {
+      contactForm.removeEventListener('submit', handleContact);
+      contactForm.addEventListener('submit', handleContact);
+    }
+  }
+
+  function handleNavClick(e) {
+    e.preventDefault();
+    const pg = this.getAttribute('data-page');
+    if(pg) navigateTo(pg);
+  }
+
+  function handleEnrollClick(e) {
+    e.preventDefault();
+    const prog = this.getAttribute('data-program');
+    if(prog) {
+      if(currentUser) {
+        const success = enrollInProgram(prog);
+        if(success) {
+          showToast(`✅ Successfully enrolled in ${prog}!`, "success");
+          navigateTo('dashboard');
+        } else {
+          showToast(`You are already enrolled in ${prog}.`, "info");
+          navigateTo('dashboard');
+        }
+      } else {
+        sessionStorage.setItem('intendedProg', prog);
+        navigateTo('register');
+        showToast("Please register or login to enroll in programs.", "info");
+      }
+    }
+  }
+
+  function handleRegister(e) {
+    e.preventDefault();
+    const name = document.getElementById('regNameMain').value;
+    const email = document.getElementById('regEmailMain').value;
+    const pass = document.getElementById('regPassMain').value;
+    const prog = document.getElementById('regProgramSelectMain').value;
+    const res = registerUser(name, email, pass, prog);
+    const msgDiv = document.getElementById('regMainMessage');
+    msgDiv.classList.remove('hidden');
+    msgDiv.className = res.success ? 'message-success' : 'message-error';
+    msgDiv.innerText = res.message;
+    if(res.success) {
+      setTimeout(() => {
+        const intended = sessionStorage.getItem('intendedProg');
+        if(intended) {
+          sessionStorage.removeItem('intendedProg');
+          enrollInProgram(intended);
+          showToast(`Enrolled in ${intended}!`, "success");
+        }
+        navigateTo('dashboard');
+      }, 1200);
+    }
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmailMain').value;
+    const pass = document.getElementById('loginPassMain').value;
+    const res = loginUser(email, pass);
+    const msgDiv = document.getElementById('loginMainMessage');
+    msgDiv.classList.remove('hidden');
+    msgDiv.className = res.success ? 'message-success' : 'message-error';
+    msgDiv.innerText = res.message;
+    if(res.success) {
+      setTimeout(() => {
+        const intended = sessionStorage.getItem('intendedProg');
+        if(intended) {
+          sessionStorage.removeItem('intendedProg');
+          enrollInProgram(intended);
+          showToast(`Enrolled in ${intended}!`, "success");
+        }
+        navigateTo('dashboard');
+      }, 800);
+    }
+  }
+
+  function toggleLoginPanel(e) {
+    e.preventDefault();
+    const panel = document.getElementById('loginSectionWrapper');
+    if(panel) panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function handleContact(e) {
+    e.preventDefault();
+    const msgDiv = document.getElementById('contactGlobalMsg');
+    msgDiv.classList.remove('hidden');
+    msgDiv.className = 'message-success';
+    msgDiv.innerText = "Thanks! We'll reply within 48 hours. Your message has been sent.";
+    document.getElementById('globalContactForm').reset();
+  }
+
+  function updateActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active-link'));
+    const active = Array.from(document.querySelectorAll('.nav-link')).find(l => l.getAttribute('data-page') === page);
+    if(active) active.classList.add('active-link');
+    else document.querySelector('.nav-link[data-page="home"]')?.classList.add('active-link');
+  }
+
+  // initialize app
+  document.addEventListener('DOMContentLoaded', () => {
+    initAuth();
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pg = link.getAttribute('data-page');
+        if(pg) navigateTo(pg);
+      });
+    });
+    navigateTo('home');
+  });
+</script>
+</body>
+</html>
